@@ -8,7 +8,7 @@ angular.module('myYoApp')
 
         $scope.addToCart = function(item) {
 
-          //$scope.$parent.addCartCount();
+          // $scope.$parent.addCartCount();
 
           var cartItems = Util.localStorage.getStorageItem('cartItems');
 
