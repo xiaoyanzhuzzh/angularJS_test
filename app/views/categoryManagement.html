@@ -1,0 +1,47 @@
+<div class="container">
+    <div class="panel panel-warning">
+        <div class="panel-heading text-center"><h3 class="text-info"><strong>Let's Go</strong>&nbsp;&nbsp;商品类别</h3></div>
+        <div class="panel-body" id="itemslist">
+           <div class="panel panel-default">
+              <div class="panel-body panel-info">
+                  <div class="row">
+                      <div class="col-md-6 form-group text-info">&nbsp;</div>
+                      <div class="col-md-2 form-group"><button class="text-info">添加类别</button></div>
+                      <div class="col-md-4 form-group text-info">Search: <input ng-model="query"></div>
+                  </div>
+              </div>
+          </div>
+          <div class="panel panel-default" ng-repeat="category in categorys | filter:query">
+              <div class="panel-body">
+                  <div class="row">
+                      <div class="col-md-10 form-group text-info">水果类</div>
+                      <div class="col-md-2 form-group text-info">
+                        <button class="text-info">修改</button>
+                          <button class="trash">
+                             <span class="glyphicon glyphicon-trash"></span>
+                          </button>
+                      </div>
+                  </div>
+                  <div class="row">
+                      <div class="col-md-10 form-group text-info">饮品类</div>
+                      <div class="col-md-2 form-group text-info">
+                        <button class="text-info">修改</button>
+                          <button class="trash">
+                             <span class="glyphicon glyphicon-trash"></span>
+                          </button>
+                      </div>
+                  </div>
+                  <div class="row">
+                      <div class="col-md-10 form-group text-info">日常用品类</div>
+                      <div class="col-md-2 form-group text-info">
+                        <button class="text-info">修改</button>
+                          <button class="trash">
+                             <span class="glyphicon glyphicon-trash"></span>
+                          </button>
+                      </div>
+                  </div>
+              </div>
+          </div>
+       </div>
+    </div>
+</div>
