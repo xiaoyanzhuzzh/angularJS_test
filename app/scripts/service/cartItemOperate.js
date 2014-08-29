@@ -24,9 +24,6 @@ angular.module('myYoApp')
     };
 
     this.addCartItemNumber = function(cartItem, cartArray){
-        if(!cartArray){
-             cartArray= [];
-        }
 
         for (var i = 0; i < cartArray.length; i++){
             if(cartItem.item.name === cartArray[i].item.name) {
@@ -39,9 +36,6 @@ angular.module('myYoApp')
     };
 
     this.reduceCartItemNumber = function(cartItem, cartArray){
-        if(!cartArray){
-          cartArray= [];
-        }
 
         for (var i = 0; i < cartArray.length; i++){
             if(cartItem.item.name === cartArray[i].item.name){
@@ -58,9 +52,6 @@ angular.module('myYoApp')
     };
 
      this.deleteCartItem = function(cartItem, cartArray){
-         if(!cartArray){
-             cartArray = [];
-         }
 
          for(var i = 0; i < cartArray.length; i++){
              if( cartItem.item.name === cartArray[i].item.name){
@@ -74,9 +65,6 @@ angular.module('myYoApp')
      };
 
      this.changeCurrentCartItemNumber = function(cartItem, cartArray){
-       if(!cartArray){
-           cartArray= [];
-       }
 
        for(var i = 0; i < cartArray.length; i++){
            if( cartItem.item.name === cartArray[i].item.name){
