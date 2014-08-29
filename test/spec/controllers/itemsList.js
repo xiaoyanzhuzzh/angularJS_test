@@ -90,31 +90,32 @@ xdescribe('Controller: ItemsListCtrl', function () {
       });
     });
 
-    xdescribe ('ItemsListCtrl: addToCart can add item to cartItem', function () {
+    describe ('ItemsListCtrl: addToCart can add item to cartItem', function () {
 
       var item, cartItems;
 
       beforeEach(function () {
 
-        item = [{barcode:'ITEM000000', name: '可口可乐', unit: '瓶', price:3.00, category:'饮品'}];
-        cartItems = [{barcode:'ITEM000001', name: '雪碧', unit:'瓶', price:3.00, category:'饮品',number: 1}];
+        item = {barcode:'ITEM000000', name: '可口可乐', unit: '瓶', price:3.00, category:'饮品'};
+        cartItems = [{item: {barcode:'ITEM000001', name: '雪碧', unit:'瓶', price:3.00, category:'饮品'},number: 1}];
 
-        spyOn(addToCartService, 'isExistInCart').andReturn(undefined);
+        spyOn(addToCartService, 'isExistInCart');
 
         createController();
       });
 
       it ('function should have been called', function () {
 
-        $scope.addToCart(item[0]);
-        expect(cartItems.length).toBe(2);
-        // expect(addToCartService.isExistInCart.calls.length).toBe(1);
-        // expect(cartItem[0].number).toBe(1);
-        // expect(cartItem[0].barcode).toBe('ITEM000000');
-        //
-        // expect(cartItem[1].number).toBe(1);
-        // expect(cartItem[1].barcode).toBe('ITEM000001');
-        //
+        $scope.addToCart(item);
+
+        expect($scope.cartItems.length).toBe(2);
+        expect(addToCartService.isExistInCart.calls.length).toBe(1);
+        expect($scope.cartItems[0].number).toBe(1);
+        expect($scope.cartItems[0].item.barcode).toBe('ITEM000000');
+
+        expect($scope.cartItems[1].number).toBe(1);
+        expect($scope.cartItems[1].item.barcode).toBe('ITEM000001');
+
 
       });
     });
