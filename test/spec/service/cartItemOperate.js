@@ -1,4 +1,4 @@
-xdescribe('cartItemOperateService', function () {
+describe('cartItemOperateService', function () {
 
     var cartItemOperateService;
 
@@ -12,7 +12,7 @@ xdescribe('cartItemOperateService', function () {
         });
     });
 
-    xdescribe('cartItemOperateService: getTotalNumber', function () {
+    describe('cartItemOperateService: getTotalNumber', function () {
 
       it ('should have getTotalNumber function and return totalNumber that is 0', function(){
 
@@ -32,7 +32,7 @@ xdescribe('cartItemOperateService', function () {
       });
     });
 
-    xdescribe('cartItemOperateService: getTotalMoney', function () {
+    describe('cartItemOperateService: getTotalMoney', function () {
 
       it ('should have getTotalMoney function and return totalMoney that is 0', function(){
 
@@ -51,12 +51,12 @@ xdescribe('cartItemOperateService', function () {
       });
     });
 
-    xdescribe('cartItemOperateService: addCartItemNumber', function () {
+    describe('cartItemOperateService: addCartItemNumber', function () {
 
       it ('should have addCartItemNumber function and can add the same cartItem number', function(){
 
         var cartItem = {item: {barcode:'ITEM000001', name: '雪碧', unit:'瓶', price:3.00, category:'饮品'}, number: 1};
-        var cartArray = [{item: {barcode:'ITEM000001', name: '雪碧', unit:'瓶', price:3.00, category:'饮品'}, number: 1}];;
+        var cartArray = [{item: {barcode:'ITEM000001', name: '雪碧', unit:'瓶', price:3.00, category:'饮品'}, number: 1}];
         spyOn(Util.localStorage,'setStorageItem');
         spyOn(cartItemOperateService,'getTotalNumber');
 
@@ -80,12 +80,12 @@ xdescribe('cartItemOperateService', function () {
       });
     });
 
-    xdescribe('cartItemOperateService: reduceCartItemNumber',function () {
+    describe('cartItemOperateService: reduceCartItemNumber',function () {
 
       it ('should have reduceCartItemNumber function and can reduce the same cateItem number', function(){
 
         var cartItem = {item: {barcode:'ITEM000001', name: '雪碧', unit:'瓶', price:3.00, category:'饮品'}, number: 2};
-        var cartArray = [{item: {barcode:'ITEM000001', name: '雪碧', unit:'瓶', price:3.00, category:'饮品'}, number: 2}];;
+        var cartArray = [{item: {barcode:'ITEM000001', name: '雪碧', unit:'瓶', price:3.00, category:'饮品'}, number: 2}];
         spyOn(Util.localStorage,'setStorageItem');
         spyOn(cartItemOperateService,'getTotalNumber');
 
@@ -98,7 +98,7 @@ xdescribe('cartItemOperateService', function () {
       it ('should have reduceCartItemNumber function and can reduce the different cateItem number', function(){
 
         var cartItem = {item: {barcode:'ITEM000000', name: '可口可乐', unit: '瓶', price:3.00, category:'饮品'}, number: 1};
-        var cartArray = [{item: {barcode:'ITEM000001', name: '雪碧', unit:'瓶', price:3.00, category:'饮品'}, number: 2}];;
+        var cartArray = [{item: {barcode:'ITEM000001', name: '雪碧', unit:'瓶', price:3.00, category:'饮品'}, number: 2}];
         spyOn(Util.localStorage,'setStorageItem');
         spyOn(cartItemOperateService,'getTotalNumber');
 
@@ -111,7 +111,7 @@ xdescribe('cartItemOperateService', function () {
       it ('should have reduceCartItemNumber function and cannot reduce to 0', function(){
 
         var cartItem = {item: {barcode:'ITEM000001', name: '雪碧', unit:'瓶', price:3.00, category:'饮品'}, number: 1};
-        var cartArray = [{item: {barcode:'ITEM000001', name: '雪碧', unit:'瓶', price:3.00, category:'饮品'}, number: 1}];;
+        var cartArray = [{item: {barcode:'ITEM000001', name: '雪碧', unit:'瓶', price:3.00, category:'饮品'}, number: 1}];
         spyOn(Util.localStorage,'setStorageItem');
         spyOn(cartItemOperateService,'getTotalNumber');
 
@@ -127,7 +127,7 @@ xdescribe('cartItemOperateService', function () {
       it ('should have deleteCartItem function and can delete the same cartItem number', function(){
 
         var cartItem = {item: {barcode:'ITEM000001', name: '雪碧', unit:'瓶', price:3.00, category:'饮品'}, number: 1};
-        var cartArray = [{item: {barcode:'ITEM000001', name: '雪碧', unit:'瓶', price:3.00, category:'饮品'}, number: 1}];;
+        var cartArray = [{item: {barcode:'ITEM000001', name: '雪碧', unit:'瓶', price:3.00, category:'饮品'}, number: 1}];
         spyOn(Util.localStorage,'setStorageItem');
         spyOn(cartItemOperateService,'getTotalNumber');
 
@@ -156,7 +156,7 @@ xdescribe('cartItemOperateService', function () {
       it ('should have changeCurrentCartItemNumber function and can change the same cartItem number', function(){
 
         var cartItem = {item: {barcode:'ITEM000001', name: '雪碧', unit:'瓶', price:3.00, category:'饮品'}, number: 1};
-        var cartArray = [{item: {barcode:'ITEM000001', name: '雪碧', unit:'瓶', price:3.00, category:'饮品'}, number: 1}];;
+        var cartArray = [{item: {barcode:'ITEM000001', name: '雪碧', unit:'瓶', price:3.00, category:'饮品'}, number: 1}];
         spyOn(Util.localStorage,'setStorageItem');
         spyOn(cartItemOperateService,'getTotalNumber');
 

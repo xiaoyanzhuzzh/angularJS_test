@@ -12,7 +12,7 @@ angular.module('myYoApp')
 
           // $scope.$parent.addCartCount();
 
-          if (!$scope.cartItemscartItems) {
+          if (!$scope.cartItems) {
             $scope.cartItems = [];
           }
 
@@ -25,7 +25,7 @@ angular.module('myYoApp')
             $scope.cartItems.push({item: item, number: 1});
           }
 
-          Util.localStorage.setStorageItem('cartItems', $scope.cartItemscartItems);
+          Util.localStorage.setStorageItem('cartItems', $scope.cartItems);
 
         };
   });

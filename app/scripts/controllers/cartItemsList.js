@@ -15,12 +15,12 @@ angular.module('myYoApp')
 
        $scope.totalNumber = cartItemOperateService.getTotalNumber($scope.cartItems);
 
-       $scope.changeCartItemcart = function(cartItem){
+       $scope.changeCartItemNumber = function(cartItem){
 
           cartItemOperateService.changeCurrentCartItemNumber(cartItem, $scope.cartItems);
-          $scope.total = cartItemOperateService.getTotalMoney($scope.cartItems);
-          $scope.totalNumber = cartItemOperateService.getTotalNumber($scope.cartItems);
-          $scope.$parent.cartCount = cartItemOperateService.getTotalNumber($scope.cartItems);
+              $scope.total = cartItemOperateService.getTotalMoney($scope.cartItems);
+              $scope.totalNumber = cartItemOperateService.getTotalNumber($scope.cartItems);
+              $scope.$parent.cartCount = cartItemOperateService.getTotalNumber($scope.cartItems);
        };
 
        $scope.addCartItemNumber = function(cartItem){
