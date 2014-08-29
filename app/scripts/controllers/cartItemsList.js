@@ -10,59 +10,45 @@
 angular.module('myYoApp')
   .controller('CartItemsListCtrl', function ($scope, cartItemOperateService) {
 
-      function getTotalNumber(cartItems) {
-        return cartItemOperateService.getTotalNumber(cartItems);
-      }
+  function getTotalNumber(cartItems) {
+    return cartItemOperateService.getTotalNumber(cartItems);
+  }
 
-      function getTotalMoney(cartItems) {
-        return cartItemOperateService.getTotalMoney(cartItems);
-      }
+  function getTotalMoney(cartItems) {
+    return cartItemOperateService.getTotalMoney(cartItems);
+  }
 
-      function getTotalNumberAndMoney() {
-        $scope.total = getTotalMoney($scope.cartItems);
-        $scope.totalNumber = getTotalNumber($scope.cartItems);
-      }
+  function updateTotalAndTotalNumber() {
+    $scope.total = getTotalMoney($scope.cartItems);
+    $scope.totalNumber = getTotalNumber($scope.cartItems);
+  }
 
-       $scope.cartItems = Util.localStorage.getStorageItem('cartItems');
+  function updateData() {
+    updateTotalAndTotalNumber();
+    $scope.$parent.cartCount = getTotalNumber($scope.cartItems);
+  }
 
-       getTotalNumberAndMoney();
+  $scope.cartItems = Util.localStorage.getStorageItem('cartItems');
 
-       $scope.changeCartItemNumber = function(cartItem){
+  updateTotalAndTotalNumber();
 
-          cartItemOperateService.changeCurrentCartItemNumber(cartItem, $scope.cartItems);
+  $scope.changeCartItemNumber = function(cartItem){
+    cartItemOperateService.changeCurrentCartItemNumber(cartItem, $scope.cartItems);
+    updateData();
+  };
 
-          getTotalNumberAndMoney();
+  $scope.addCartItemNumber = function(cartItem){
+    cartItemOperateService.addCartItemNumber(cartItem, $scope.cartItems);
+    updateData();
+  };
 
-          $scope.$parent.cartCount = getTotalNumber($scope.cartItems);
-       };
+  $scope.reduceCartItemNumber = function(cartItem){
+    cartItemOperateService.reduceCartItemNumber(cartItem, $scope.cartItems);
+    updateData();
+  };
 
-       $scope.addCartItemNumber = function(cartItem){
-
-           cartItemOperateService.addCartItemNumber(cartItem, $scope.cartItems);
-
-           getTotalNumberAndMoney();
-
-           $scope.$parent.cartCount = getTotalNumber($scope.cartItems);
-
-       };
-
-       $scope.reduceCartItemNumber = function(cartItem){
-
-           cartItemOperateService.reduceCartItemNumber(cartItem, $scope.cartItems);
-
-           getTotalNumberAndMoney();
-
-           $scope.$parent.cartCount = getTotalNumber($scope.cartItems);
-
-       };
-
-       $scope.deleteCartItem = function(cartItem){
-
-          $scope.cartItems = cartItemOperateService.deleteCartItem(cartItem, $scope.cartItems);
-
-          getTotalNumberAndMoney();
-
-          $scope.$parent.cartCount = getTotalNumber($scope.cartItems);
-       };
-
-  });
+  $scope.deleteCartItem = function(cartItem){
+    $scope.cartItems = cartItemOperateService.deleteCartItem(cartItem, $scope.cartItems);
+    updateData();
+  };
+});
