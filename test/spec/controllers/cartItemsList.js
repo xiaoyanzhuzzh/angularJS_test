@@ -21,11 +21,10 @@ describe('CartItemsListCtrl', function () {
      });
    });
 
-  describe('CartItemsListCtrl: cartItems', function () {
+  describe('cartItems', function () {
 
     it('should load cartItems', function () {
       spyOn(Util.localStorage, 'getStorageItem').andReturn(
-
         [{item: {barcode:'ITEM000001', name: '雪碧', unit:'瓶', price:3.00, category:'饮品'},number: 1}]
       );
       createController();
@@ -37,7 +36,7 @@ describe('CartItemsListCtrl', function () {
     });
   });
 
-  describe('CartItemsListCtrl: total', function () {
+  describe('total', function () {
 
     it('should load total', function () {
 
@@ -50,7 +49,7 @@ describe('CartItemsListCtrl', function () {
     });
   });
 
-  describe('CartItemsListCtrl: totalNumber', function () {
+  describe('totalNumber', function () {
 
     it('should load totalNumber', function () {
 
@@ -63,7 +62,7 @@ describe('CartItemsListCtrl', function () {
     });
   });
 
-  describe('CartItemsListCtrl: changeCartItemNumber', function () {
+  describe('changeCartItemNumber', function () {
     var cartItem;
 
     beforeEach(function () {
@@ -85,7 +84,7 @@ describe('CartItemsListCtrl', function () {
     });
   });
 
-  describe('CartItemsListCtrl: addCartItemNumber', function () {
+  describe('addCartItemNumber', function () {
     var cartItem;
 
     beforeEach(function () {
@@ -109,7 +108,7 @@ describe('CartItemsListCtrl', function () {
 
   });
 
-  describe('CartItemsListCtrl: reduceCartItemNumber', function () {
+  describe('reduceCartItemNumber', function () {
     var cartItem;
 
     beforeEach(function () {
@@ -133,7 +132,7 @@ describe('CartItemsListCtrl', function () {
 
   });
 
-  describe('CartItemsListCtrl: deleteCartItem', function () {
+  describe('deleteCartItem', function () {
     var cartItem;
 
     beforeEach(function () {
