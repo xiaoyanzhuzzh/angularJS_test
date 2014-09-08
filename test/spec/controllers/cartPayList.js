@@ -20,7 +20,7 @@ describe('CartPayListCtrl', function () {
     });
   });
 
-  describe('CartPayListCtrl: cartPayList', function () {
+  describe('cartPayList', function () {
     it('should load cartPayList', function () {
       spyOn(Util.localStorage, 'getStorageItem').andReturn(
 
@@ -34,7 +34,7 @@ describe('CartPayListCtrl', function () {
       expect(Util.localStorage.getStorageItem.calls.length).toBe(1);
     });
 
-    describe('CartPayListCtrl: totalMoney', function () {
+    describe('totalMoney', function () {
 
       beforeEach(function () {
 
@@ -50,7 +50,7 @@ describe('CartPayListCtrl', function () {
       });
     });
 
-    describe('CartPayListCtrl: totalNumber', function () {
+    describe('totalNumber', function () {
 
       beforeEach(function () {
 

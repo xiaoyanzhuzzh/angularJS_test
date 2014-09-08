@@ -25,7 +25,7 @@ describe('Controller: ItemsListCtrl', function () {
         });
     });
 
-    describe ('ItemsListCtrl: allItems', function () {
+    describe ('allItems', function () {
         beforeEach(function () {
             var items = [
                    {barcode:'ITEM000000', name: '可口可乐', unit: '瓶', price:3.00, category:'饮品'},
@@ -63,7 +63,7 @@ describe('Controller: ItemsListCtrl', function () {
 
     });
 
-    describe ('ItemsListCtrl: cartItems',function () {
+    describe ('cartItems',function () {
 
       it ('should load cartItems from localStorage', function () {
 
@@ -80,7 +80,7 @@ describe('Controller: ItemsListCtrl', function () {
       });
     });
 
-    describe ('ItemsListCtrl: addToCart can make existed cartItem number add by 1', function () {
+    describe ('addToCart can make existed cartItem number add by 1', function () {
 
       var item;
 
@@ -103,7 +103,7 @@ describe('Controller: ItemsListCtrl', function () {
       });
     });
 
-    describe ('ItemsListCtrl: addToCart can add item to cartItem', function () {
+    describe ('addToCart can add item to cartItem', function () {
 
       var itemA, itemB;
 

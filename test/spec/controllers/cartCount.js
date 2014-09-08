@@ -29,7 +29,7 @@ describe('addCartCountCtrl', function () {
     expect(Util.localStorage.getStorageItem.calls.length).toBe(1);
   });
 
-  describe('addCartCountCtrl: addCartCount',function () {
+  describe('addCartCount',function () {
 
     beforeEach(function () {
 

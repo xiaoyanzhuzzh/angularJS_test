@@ -12,7 +12,7 @@ describe('cartItemOperateService', function () {
         });
     });
 
-    describe('cartItemOperateService: getTotalNumber', function () {
+    describe('getTotalNumber', function () {
 
       it ('should have getTotalNumber function and return totalNumber that is 0', function(){
 
@@ -32,7 +32,7 @@ describe('cartItemOperateService', function () {
       });
     });
 
-    describe('cartItemOperateService: getTotalMoney', function () {
+    describe('getTotalMoney', function () {
 
       it ('should have getTotalMoney function and return totalMoney that is 0', function(){
 
@@ -51,7 +51,7 @@ describe('cartItemOperateService', function () {
       });
     });
 
-    describe('cartItemOperateService: addCartItemNumber', function () {
+    describe('addCartItemNumber', function () {
 
       it ('should have addCartItemNumber function and can add the same cartItem number', function(){
 
@@ -80,7 +80,7 @@ describe('cartItemOperateService', function () {
       });
     });
 
-    describe('cartItemOperateService: reduceCartItemNumber',function () {
+    describe('reduceCartItemNumber',function () {
 
       it ('should have reduceCartItemNumber function and can reduce the same cateItem number', function(){
 
@@ -122,7 +122,7 @@ describe('cartItemOperateService', function () {
       });
     });
 
-    describe('cartItemOperateService: deleteCartItem', function () {
+    describe('deleteCartItem', function () {
 
       it ('should have deleteCartItem function and can delete the same cartItem number', function(){
 
@@ -151,7 +151,7 @@ describe('cartItemOperateService', function () {
       });
     });
 
-    describe('cartItemOperateService: changeCurrentCartItemNumber', function () {
+    describe('changeCurrentCartItemNumber', function () {
 
       it ('should have changeCurrentCartItemNumber function and can change the same cartItem number', function(){
 
