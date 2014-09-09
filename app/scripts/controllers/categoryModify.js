@@ -2,7 +2,7 @@
 
 
 angular.module('myYoApp')
-    .controller('CategoryModefyCtrl', function ($scope, categoryService) {
+    .controller('CategoryModifyCtrl', function ($scope, categoryService) {
 
         $scope.items = Util.localStorage.getStorageItem('items');
 

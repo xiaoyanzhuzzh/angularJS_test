@@ -36,9 +36,9 @@ angular
         templateUrl: 'views/cartPayList.html',
         controller: 'CartPayListCtrl'
       })
-      .when('/categoryModefy', {
-        templateUrl: 'views/categoryModefy.html',
-        controller: 'CategoryModefyCtrl'
+      .when('/categoryModify', {
+        templateUrl: 'views/categoryModify.html',
+        controller: 'CategoryModifyCtrl'
       })
       .when('/categoryAdd', {
         templateUrl: 'views/categoryAdd.html',
