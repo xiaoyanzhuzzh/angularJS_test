@@ -8,19 +8,17 @@
                 <div class="col-md-5 form-group text-info">&nbsp;</div>
                 <div class="col-md-4 form-group text-info">Search: <input ng-model="query"></div>
                 <div class="col-md-3 form-group text-info">
-                  <button type="button" class="btn btn-primary btn-sm" ng-click="addToCart(item)">添加分类</button>
-                  <div class ="group">类名<input ng-model="query"></div>
+                  <button type="button" class="btn btn-primary btn-sm" ng-click="addCategory()">添加分类</button>
+                  <div class ="group" ng-show="false">类名<input ng-model="query"></div>
                 </div>
             </div>
-            <div class="panel panel-default" ng-repeat="item in items | filter:query">
+            <div class="panel panel-default" ng-repeat="category in categorys | filter:query">
                 <div class="panel-body">
                     <div class="row">
-                        <div class="col-md-3 form-group">{{item.category}}</div>
-                        <div class="col-md-3 form-group">{{item.name}}</div>
-                        <div class="col-md-3 form-group">{{(item.price).toFixed(2)}} / {{item.unit}}</div>
-                        <div class="col-md-3 form-group">
+                        <div class="col-md-10 form-group">{{category}}</div>
+                        <div class="col-md-2 form-group">
                             <button class="trash">
-                                 <span class="glyphicon glyphicon-trash" ng-click="deleteCurrentCategory(item)"></span>
+                                 <span class="glyphicon glyphicon-trash" ng-click="deleteCurrentCategory(category)"></span>
                             </button>
                         </div>
                     </div>
