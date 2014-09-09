@@ -36,13 +36,13 @@ angular
         templateUrl: 'views/cartPayList.html',
         controller: 'CartPayListCtrl'
       })
-      .when('/categoryManagementList', {
-        templateUrl: 'views/categoryManagement.html',
-        controller: 'CategoryManagementCtrl'
+      .when('/categoryModefy', {
+        templateUrl: 'views/categoryModefy.html',
+        controller: 'CategoryModefyCtrl'
       })
-      .when('/itemManagementList', {
-        templateUrl: 'views/itemManagement.html',
-        controller: 'ItemManagementCtrl'
+      .when('/categoryAdd', {
+        templateUrl: 'views/categoryAdd.html',
+        controller: 'CategoryAddCtrl'
       })
 
       .otherwise({
