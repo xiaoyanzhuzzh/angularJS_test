@@ -1,29 +1,32 @@
 <div class="container">
   <div class="panel panel-warning">
     <div class="panel-heading text-center"><h3 class="text-info"><strong>Let's Go</strong>&nbsp;&nbsp;商品类别</h3></div>
-    <div class="panel-body" id="itemslist">
-      <div class="panel panel-default">
-        <div class="panel-body panel-info">
-            <div class="row">
-                <div class="col-md-5 form-group text-info">&nbsp;</div>
-                <div class="col-md-4 form-group text-info">Search: <input ng-model="query"></div>
-                <div class="col-md-3 form-group text-info">
-                  <button type="button" class="btn btn-primary btn-sm" ng-click="addCategory()">添加分类</button>
-                  <div class ="group" ng-show="false">类名<input ng-model="query"></div>
-                </div>
-            </div>
-            <div class="panel panel-default" ng-repeat="category in categorys | filter:query">
-                <div class="panel-body">
-                    <div class="row">
-                        <div class="col-md-10 form-group">{{category}}</div>
-                        <div class="col-md-2 form-group">
-                            <button class="trash">
-                                 <span class="glyphicon glyphicon-trash" ng-click="deleteCurrentCategory(category)"></span>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
+    <div class="panel-body">
+      <div class="row">
+          <div class="col-md-5 form-group text-info">&nbsp;</div>
+          <div class="col-md-4 form-group text-info">Search: <input ng-model="query"></div>
+          <div class="col-md-3 form-group text-info">
+            <button type="button" class="btn btn-primary btn-sm" ng-click="addCategory()">添加分类</button>
+          </div>
+      </div>
+      <div class="row" ng-show="showSignal">
+          <div class="col-md-5 form-group text-info">&nbsp;</div>
+          <div class="col-md-4 form-group text-info">&nbsp;&nbsp;&nbsp;类名:&nbsp;&nbsp;<input ng-model="category"></div>
+          <div class="col-md-3 form-group text-info">
+            <button type="button" class="btn btn-primary btn-sm" ng-click="addButton(category)">添加</button>
+          </div>
+      </div>
+
+      <div class="panel panel-warning">
+        <div class="panel-body">
+          <div class="row" ng-repeat="category in categorys | filter:query">
+              <div class="col-md-10 form-group">{{category}}</div>
+              <div class="col-md-2 form-group">
+                  <button class="trash">
+                       <span class="glyphicon glyphicon-trash" ng-click="deleteCurrentCategory(category)"></span>
+                  </button>
+              </div>
+          </div>
         </div>
       </div>
     </div>
