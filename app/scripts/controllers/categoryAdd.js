@@ -2,19 +2,15 @@
 
 
 angular.module('myYoApp')
-    .controller('CategoryAddCtrl', function ($scope, itemsService) {
+    .controller('CategoryAddCtrl', function ($scope, categoryService) {
 
-        $scope.items = itemsService.getItems();
+        $scope.items = Util.localStorage.getStorageItem('items');
+
+        $scope.categorys = categoryService.getCategorys($scope.items);
 
         $scope.deleteCurrentCategory = function (item) {
 
-          for (var i = 0; i < $scope.items.length; i++){
-
-            if(item.category === $scope.items[i].category){
-              
-              $scope.items = _.without($scope.items, $scope.items[i]);
-              Util.localStorage.setStorageItem('items', $scope.items);
-            }
-          }
+          $scope.categorys = categoryService.deleteCategory($scope.categorys, category);
+          $scope.items = categoryService.deleteItem($scope.items, category);
         };
     });

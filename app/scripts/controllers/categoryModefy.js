@@ -2,19 +2,15 @@
 
 
 angular.module('myYoApp')
-    .controller('CategoryModefyCtrl', function ($scope, itemsService) {
+    .controller('CategoryModefyCtrl', function ($scope, categoryService) {
 
-        $scope.items = itemsService.getItems();
+        $scope.items = Util.localStorage.getStorageItem('items');
 
-        $scope.deleteCurrentCategory = function (item) {
+        $scope.categorys = categoryService.getCategorys($scope.items);
 
-          for (var i = 0; i < $scope.items.length; i++){
+        $scope.deleteCurrentCategory = function (category) {
 
-            if(item.category === $scope.items[i].category){
-
-              $scope.items = _.without($scope.items, $scope.items[i]);
-              Util.localStorage.setStorageItem('items', $scope.items);
-            }
-          }
+          $scope.categorys = categoryService.deleteCategory($scope.categorys, category);
+          $scope.items = categoryService.deleteItem($scope.items, category);
         };
     });
