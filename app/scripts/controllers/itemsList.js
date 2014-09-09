@@ -4,9 +4,9 @@
 angular.module('myYoApp')
     .controller('ItemsListCtrl', function ($scope, itemsService, addToCartService) {
 
-        itemsService.getItems();
-        $scope.items = Util.localStorage.getStorageItem('items');
 
+        $scope.items = itemsService.getItems();
+        
         $scope.cartItems = Util.localStorage.getStorageItem('cartItems');
 
         $scope.addToCart = function(item) {

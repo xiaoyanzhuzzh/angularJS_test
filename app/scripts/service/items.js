@@ -22,5 +22,6 @@ angular.module('myYoApp')
            ];
 
           Util.localStorage.setStorageItem('items',items);
+          return items;
          };
     });
