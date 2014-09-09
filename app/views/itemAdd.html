@@ -1,0 +1,47 @@
+<div class="container">
+  <div class="panel panel-warning">
+    <div class="panel-heading text-center"><h3 class="text-info"><h3>添加商品</h3></div>
+    <div class="panel-body">
+      <div class="row">
+          <div class="col-md-4 form-group text-info">&nbsp;</div>
+          <div class="col-md-4 form-group text-info">Search: <input ng-model="query"></div>
+          <div class="col-md-3 form-group text-info">
+            <button type="button" class="btn btn-primary btn-sm" ng-click="addItemButton()">添加分类</button>
+          </div>
+      </div>
+      <div class="row">
+          <div class="col-md-4 form-group text-info">
+            <div class="row" ng-show="showItemSignal">
+              <form>
+                <div class="text-center form-group">名称：<input ng-model="item.name"></div>
+                <div class="text-center form-group">单位：<input ng-model="item.unit"></div>
+                <div class="text-center form-group">单价：<input ng-model="item.price"></div>
+                <div class="text-center form-group">
+                  <button type="button" class="btn btn-primary btn-sm" ng-click="addNewItemButton(item)">添加</button>
+                  <button type="button" class="btn btn-primary btn-sm" ng-click="cancelButton()">取消</button>
+                </div>
+              </form>
+            </div>
+          </div>
+          <div class="col-md-8 form-group text-default">
+            <div class="panel panel-default">
+              <div class="panel-body">
+                <div class="row" ng-repeat="item in items | filter:query">
+                    <div class="col-md-4 form-group">{{item.name}}</div>
+                    <div class="col-md-4 form-group">{{item.unit}}</div>
+                    <div class="col-md-3 form-group">{{(item.price).toFixed(2)}} 元/ {{item.unit}}</div>
+                    <div class="col-md-1 form-group">
+                        <button class="trash">
+                             <span class="glyphicon glyphicon-trash" ng-click="deleteCurrentItem(item)"></span>
+                        </button>
+                    </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+      </div>
+
+    </div>
+  </div>
+</div>

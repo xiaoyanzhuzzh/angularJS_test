@@ -2,10 +2,10 @@
 
 
 angular.module('myYoApp')
-    .controller('CategoryAddCtrl', function ($scope, categoryService) {
+    .controller('ItemModifyCtrl', function ($scope, categoryService) {
 
         $scope.items = Util.localStorage.getStorageItem('items');
-        
+
         $scope.categorys = Util.localStorage.getStorageItem('categorys');
 
         $scope.deleteCurrentCategory = function (category) {
