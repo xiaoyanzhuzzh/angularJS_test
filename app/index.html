@@ -48,9 +48,15 @@
 
                       <li role="presentation" class="active"><a href="#">主页</a></li>
                       <li role="presentation"><a ng-href="#/itemsList">商城</a></li>
-                      <li role="presentation"><a ng-href="#/categoryModify">修改类别</a></li>
-                      <li role="presentation"><a ng-href="#/categoryAdd">添加类别</a></li>
-
+                      <li role="presentation">
+                        <a class="dropdown-toggle" data-toggle="dropdown">
+                          <span class="glyphicon glyphicon-user">类别管理<span class="caret"></span></span>
+                        </a>
+                        <ul class="dropdown-menu" role="menu">
+                          <li><a href="#/categoryModify">修改类别</a></li>
+                          <li><a ng-href="#/categoryAdd">添加类别</a></li>
+                        </ul>
+                      </li>
                       <li role="presentation"><a ng-href="#/cartPayList">购物结算</a></li>
                   </ul>
                   <ul class="nav navbar-nav navbar-right">
