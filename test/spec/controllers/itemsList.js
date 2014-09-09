@@ -36,7 +36,7 @@ describe('Controller: ItemsListCtrl', function () {
             createController();
 
       });
-
+      
       it ('The length should be 2', function () {
           expect($scope.items.length).toBe(2);
       });
