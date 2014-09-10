@@ -16,15 +16,16 @@ angular.module('myYoApp')
 
         $scope.showSignal = false;
 
-        $scope.addCategoryButton = function () {
+        $scope.addButton = function () {
 
             $scope.showSignal = true;
 
         };
 
-        $scope.addNewCategoryButton = function (newCategory) {
+        $scope.addNewCategory = function (newCategory) {
 
-            $scope.categorys.push(newCategory);
+            var category = {id: $scope.categorys.length, name: newCategory};
+            $scope.categorys.push(category);
             Util.localStorage.setStorageItem('categorys', $scope.categorys);
 
             $scope.showSignal = false;

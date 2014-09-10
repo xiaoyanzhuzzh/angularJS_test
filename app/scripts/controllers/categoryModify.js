@@ -15,7 +15,7 @@ angular.module('myYoApp')
           $scope.items = categoryService.deleteItem(category, $scope.items);
         };
 
-        $scope.modifySignal = false;category
+        $scope.modifySignal = false;
 
         $scope.modifyCurrentCategory = function () {
 

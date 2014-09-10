@@ -5,8 +5,8 @@ angular.module('myYoApp')
     .controller('ItemAddCtrl', function ($scope, categoryService, itemManagementService) {
 
         $scope.items = Util.localStorage.getStorageItem('items');
-        $scope.categorys = categoryService.getCategorysAndId($scope.items);
-        //$scope.categorys = Util.localStorage.getStorageItem('categorys');
+        //$scope.categorys = categoryService.getCategorysAndId($scope.items);
+        $scope.categorys = Util.localStorage.getStorageItem('categorys');
 
         $scope.deleteCurrentItem = function (item) {
 
