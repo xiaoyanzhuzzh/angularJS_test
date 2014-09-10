@@ -11,12 +11,11 @@ angular.module('myYoApp')
 
         $scope.deleteCurrentCategory = function (category) {
 
-          $scope.categorys = categoryService.deleteCategory($scope.categorys, category);
-          $scope.items = categoryService.deleteItem($scope.items, category);
-          console.log($scope.items);
+          $scope.categorys = categoryService.deleteCategory(category, $scope.categorys);
+          $scope.items = categoryService.deleteItem(category, $scope.items);
         };
 
-        $scope.modifySignal = false;
+        $scope.modifySignal = false;category
 
         $scope.modifyCurrentCategory = function () {
 
@@ -25,7 +24,8 @@ angular.module('myYoApp')
 
         $scope.changeCurrentCategory = function (category) {
 
-          categoryService.changeCategory(category, $scope.categorys);
+          $scope.categorys = categoryService.changeCategory(category, $scope.categorys);
+          $scope.items = categoryService.changeItem(category, $scope.items);
         };
 
         $scope.cancelModify = function () {

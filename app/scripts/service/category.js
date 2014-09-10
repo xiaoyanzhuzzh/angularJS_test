@@ -32,7 +32,7 @@ angular.module('myYoApp')
         };
 
 
-        this.deleteCategory = function (categorys, category) {
+        this.deleteCategory = function (category, categorys) {
           for (var i = 0; i < categorys.length; i++){
 
             if(category.id === categorys[i].id){
@@ -44,7 +44,7 @@ angular.module('myYoApp')
           return Util.localStorage.getStorageItem('categorys');
         };
 
-        this.deleteItem = function (items,category) {
+        this.deleteItem = function (category, items) {
 
           for(var i = 0; i < items.length; i++){
 
@@ -58,7 +58,7 @@ angular.module('myYoApp')
           return Util.localStorage.getStorageItem('items');
         };
 
-        this.changeCurrentCategory = function (categorys, categorys) {
+        this.changeCategory = function (category, categorys) {
 
           for (var i = 0; i < categorys.length; i++){
 
@@ -68,5 +68,22 @@ angular.module('myYoApp')
               Util.localStorage.setStorageItem('categorys', categorys);
             }
           }
+          return Util.localStorage.getStorageItem('categorys');
+        };
+
+        this.changeItem = function (category, items) {
+          console.log(category);
+          console.log(items);
+
+          for(var i = 0; i < items.length; i++){
+
+            if(items[i].category === category.name){
+
+              items[i].category = category.name;
+              i--;
+            }
+          }
+          Util.localStorage.setStorageItem('items', items);
+          return Util.localStorage.getStorageItem('items');
         };
   });
