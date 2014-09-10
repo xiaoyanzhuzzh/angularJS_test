@@ -2,31 +2,30 @@
 
 
 angular.module('myYoApp')
-    .controller('ItemModifyCtrl', function ($scope, categoryService) {
+  .controller('ItemModifyCtrl', function ($scope, itemManagementService) {
 
-        $scope.items = Util.localStorage.getStorageItem('items');
+    $scope.items = Util.localStorage.getStorageItem('items');
 
-        $scope.categorys = Util.localStorage.getStorageItem('categorys');
+    $scope.deleteCurrentItem = function (item) {
 
-        $scope.deleteCurrentCategory = function (category) {
+      $scope.items = itemManagementService.deleteItem($scope.items, item);
+    };
 
-          $scope.categorys = categoryService.deleteCategory($scope.categorys, category);
-          $scope.items = categoryService.deleteItem($scope.items, category);
-        };
+    $scope.showItemSignal = false;
 
-        $scope.showSignal = false;
+    $scope.modifyCurrentItem = function () {
 
-        $scope.addCategory = function () {
+      $scope.showItemSignal = true;
 
-          $scope.showSignal = true;
+    };
 
-        };
+    $scope.cancelButton = function () {
 
-        $scope.addButton = function (newCategory) {
+      $scope.showItemSignal = false;
+    };
 
-          $scope.categorys.push(newCategory);
-          Util.localStorage.setStorageItem('categorys', $scope.categorys);
+    $scope.modifyItemButton = function (item) {
 
-          $scope.showSignal = false;
-        };
-    });
+      $scope.items.push(item);
+    }
+  });

@@ -2,9 +2,11 @@
 
 
 angular.module('myYoApp')
-    .controller('ItemAddCtrl', function ($scope, itemManagementService) {
+    .controller('ItemAddCtrl', function ($scope, categoryService, itemManagementService) {
 
         $scope.items = Util.localStorage.getStorageItem('items');
+        $scope.categorys = categoryService.getCategorysAndId($scope.items);
+        //$scope.categorys = Util.localStorage.getStorageItem('categorys');
 
         $scope.deleteCurrentItem = function (item) {
 
@@ -13,7 +15,7 @@ angular.module('myYoApp')
 
         $scope.showItemSignal = false;
 
-        $scope.addItemButton = function () {
+        $scope.addButton = function () {
 
           $scope.showItemSignal = true;
 
@@ -24,8 +26,10 @@ angular.module('myYoApp')
           $scope.showItemSignal = false;
         };
 
-        $scope.addNewItemButton = function (item) {
-
+        $scope.addNewItem = function (item, categoryName) {
+         item.category = categoryName;
          $scope.items.push(item);
+         Util.localStorage.setStorageItem('items', $scope.items);
+         $scope.showItemSignal = false;
         }
     });
