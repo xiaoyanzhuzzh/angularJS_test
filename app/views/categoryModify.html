@@ -16,16 +16,17 @@
           <div class="panel panel-default">
               <div class="panel-body">
                   <div class="row" ng-repeat="category in categorys | filter:query">
-                      <div class="col-md-4 form-group">{{category}}</div>
-                      <div class="col-md-6 form-group" ng-show="showModify"><input ng-model="category" ng-change="changeCategory(category)">
-                        <button type="button" class="btn btn-primary btn-sm" ng-click="cancelModify()">取消</button>
+                      <div class="col-md-2 form-group">{{category.name}}</div>
+                      <div class="col-md-6 form-group" ng-show="modifySignal">
+                        <input type="text" ng-model="category.name" ng-change="changeCurrentCategory(category)">
+                        <!-- <button type="button" class="btn btn-primary btn-sm" ng-click="cancelModify()">取消</button> -->
                       </div>
-                      <div class="col-md-2 form-group">
-                          <button type="button" class="btn btn-primary btn-sm" ng-click="modifyCurrentCategory(category)">修改</button>
-                      </div>
-                      <div class="col-md-2 form-group">
+                      <div class="col-md-3 form-group">
+                          <button type="button" class="btn btn-info btn-sm" ng-click="modifyCurrentCategory()">
+                            修改
+                          </button>
                           <button class="trash">
-                               <span class="glyphicon glyphicon-trash" ng-click="deleteCurrentCategory(category)"></span>
+                            <span class="glyphicon glyphicon-trash" ng-click="deleteCurrentCategory(category)"></span>
                           </button>
                       </div>
                   </div>
