@@ -25,7 +25,7 @@ angular.module('myYoApp')
 
     $scope.modifyCurrentItem = function (newItem) {
 
-      itemManagementService.modifyItem(newItem, $scope.items);
+      $scope.items = itemManagementService.modifyItem(newItem, $scope.items);
     };
 
     $scope.cancelButton = function () {
