@@ -1,4 +1,4 @@
-describe('CartPayListCtrl', function () {
+xdescribe('CartPayListCtrl', function () {
    var $scope, cartItemOperateService, createController;
   beforeEach(function () {
     module('myYoApp');

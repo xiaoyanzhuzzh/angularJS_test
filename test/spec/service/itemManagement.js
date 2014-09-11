@@ -1,4 +1,4 @@
-describe('itemManagementService', function () {
+xdescribe('itemManagementService', function () {
 
     var itemManagementService, items;
 

@@ -1,4 +1,4 @@
-describe('cartItemOperateService', function () {
+xdescribe('cartItemOperateService', function () {
 
     var cartItemOperateService;
 
