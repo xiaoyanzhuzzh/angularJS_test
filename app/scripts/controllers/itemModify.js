@@ -16,16 +16,16 @@ angular.module('myYoApp')
 
     $scope.showItemSignal = false;
 
-    $scope.modifyButton = function () {
+    $scope.modifyButton = function (changingItem) {
 
       $scope.showItemSignal = true;
+      Util.localStorage.setStorageItem('changingItem', changingItem);
 
     };
 
-    $scope.modifyItem = function (item) {
+    $scope.modifyCurrentItem = function (newItem) {
 
-      console.log(items);
-      $scope.items.push(item);
+      itemManagementService.modifyItem(newItem, $scope.items);
     };
 
     $scope.cancelButton = function () {

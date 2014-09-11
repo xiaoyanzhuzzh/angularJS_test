@@ -14,4 +14,19 @@ angular.module('myYoApp')
           return Util.localStorage.getStorageItem('items');
         };
 
+        this.modifyItem = function (newItem, items) {
+
+          var changingItem = Util.localStorage.getStorageItem('changingItem');
+
+          for (var i = 0; i < items.length; i++) {
+
+            if(changingItem.name === items[i].name) {
+
+              items[i].name = newItem.name;
+              items[i].unit = newItem.unit;
+              items[i].price = newItem.price;
+            }
+          }
+          Util.localStorage.setStorageItem('items', items);
+        };
   });
