@@ -1,13 +1,5 @@
 'use strict';
 
-/**
- * @ngdoc function
- * @name myYoApp.controller:MainCtrl
- * @description
- * # MainCtrl
- * Controller of the myYoApp
- */
-
 angular.module('myYoApp')
     .service('itemsService',function(){
 

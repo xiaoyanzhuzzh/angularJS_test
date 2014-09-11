@@ -1,4 +1,4 @@
-
+'use strict';
 
 angular.module('myYoApp')
   .service('categoryService', function(){
@@ -72,7 +72,7 @@ angular.module('myYoApp')
         };
 
         this.changeItem = function (category, items) {
-          
+
           for(var i = 0; i < items.length; i++){
 
             if(items[i].category === category.name){
