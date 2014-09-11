@@ -15,7 +15,8 @@ describe('CategoryAddCtrl', function () {
            createController = function () {
 
              return $controller ('CategoryAddCtrl', {
-                  $scope: $scope
+                  $scope: $scope,
+                  categoryService: categoryService
              });
            };
        });
@@ -59,6 +60,28 @@ describe('CategoryAddCtrl', function () {
     expect($scope.showSignal).toEqual(false);
   });
 
+  describe('addButton', function () {
+
+    it('should make showSignal true', function () {
+
+      createController();
+      addButton();
+
+      expect($scope.showSignal).toBe(true);
+    });
+  });
+
+  describe('cancelButton', function () {
+
+    it('should make showSignal false', function () {
+
+      createController();
+      cancelButton();
+
+      expect($scope.showSignal).toBe(false);
+    });
+  });
+
   describe('deleteCurrentCategory function', function () {
 
     it('should delete current categorys and items', function () {
@@ -77,23 +100,12 @@ describe('CategoryAddCtrl', function () {
     });
   });
 
-  describe('addButton', function () {
-
-    it('should make showSignal true', function () {
-
-      createController();
-      addButton();
-
-      expect($scope.showSignal).toBe(true);
-    });
-  });
-
   describe('addNewCategory function', function () {
 
     it('should add new category to categorys', function () {
 
       var newCategory = '饮品';
-      $scope.categorys = [{id: 0, name: '水果'}]
+      $scope.categorys = [{id: 0, name: '水果'}];
 
       spyOn(Util.localStorage, 'setStorageItem');
 
@@ -104,19 +116,9 @@ describe('CategoryAddCtrl', function () {
       expect($scope.categorys[0].id).toEqual(0);
       expect($scope.categorys[0].name).toEqual('水果');
       expect($scope.categorys[1].id).toEqual(1);
+      expect($scope.showSignal).toBe(false);
 
       expect(Util.localStorage.setStorageItem.calls.length).toBe(1);
-    });
-  });
-
-  describe('cancelButton', function () {
-
-    it('should make showSignal false', function () {
-
-      createController();
-      cancelButton();
-
-      expect($scope.showSignal).toBe(false);
     });
   });
 });

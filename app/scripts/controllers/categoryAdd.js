@@ -25,8 +25,8 @@ angular.module('myYoApp')
         $scope.addNewCategory = function (newCategory) {
 
             var category = {id: 0, name: newCategory};
-            category.id = $scope.categories[$scope.categories.length - 1].id + 1;
-            
+            category.id = $scope.categorys[$scope.categorys.length - 1].id + 1;
+
             $scope.categorys.push(category);
             Util.localStorage.setStorageItem('categorys', $scope.categorys);
 
