@@ -30,5 +30,4 @@ describe('addToCartService', function () {
 
       expect(result).toEqual(cartItems[0]);
     });
-
 });

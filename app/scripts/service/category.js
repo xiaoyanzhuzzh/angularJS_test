@@ -12,10 +12,9 @@ angular.module('myYoApp')
             if (!_.contains(categoryNames, items[i].category)) {
 
               categoryNames.push(items[i].category);
-              Util.localStorage.setStorageItem('categoryNames', categoryNames);
             }
           }
-          return Util.localStorage.getStorageItem('categoryNames');
+          return categoryNames;
         };
 
         this.getCategorysAndId = function (items) {
@@ -28,11 +27,12 @@ angular.module('myYoApp')
             categorys.push({id: i, name: categoryNames[i]});
             Util.localStorage.setStorageItem('categorys', categorys);
           }
-          return Util.localStorage.getStorageItem('categorys');
+          return categorys;
         };
 
 
         this.deleteCategory = function (category, categorys) {
+
           for (var i = 0; i < categorys.length; i++){
 
             if(category.id === categorys[i].id){
@@ -41,7 +41,7 @@ angular.module('myYoApp')
               Util.localStorage.setStorageItem('categorys', categorys);
             }
           }
-          return Util.localStorage.getStorageItem('categorys');
+          return categorys;
         };
 
         this.deleteItem = function (category, items) {
@@ -55,7 +55,7 @@ angular.module('myYoApp')
             }
           }
           Util.localStorage.setStorageItem('items', items);
-          return Util.localStorage.getStorageItem('items');
+          return items;
         };
 
         this.changeCategory = function (category, categorys) {
@@ -68,13 +68,11 @@ angular.module('myYoApp')
               Util.localStorage.setStorageItem('categorys', categorys);
             }
           }
-          return Util.localStorage.getStorageItem('categorys');
+          return categorys;
         };
 
         this.changeItem = function (category, items) {
-          console.log(category);
-          console.log(items);
-
+          
           for(var i = 0; i < items.length; i++){
 
             if(items[i].category === category.name){
@@ -84,6 +82,6 @@ angular.module('myYoApp')
             }
           }
           Util.localStorage.setStorageItem('items', items);
-          return Util.localStorage.getStorageItem('items');
+          return items;
         };
   });
