@@ -1,6 +1,5 @@
 'use strict';
 
-
 angular.module('myYoApp')
     .controller('CategoryModifyCtrl', function ($scope, categoryService) {
 
