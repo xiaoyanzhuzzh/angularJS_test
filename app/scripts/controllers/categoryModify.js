@@ -5,8 +5,7 @@ angular.module('myYoApp')
 
         $scope.items = Util.localStorage.getStorageItem('items');
 
-        $scope.categorys = categoryService.getCategorysAndId($scope.items);
-        //$scope.categorys = Util.localStorage.getStorageItem('categorys');
+        $scope.categorys = Util.localStorage.getStorageItem('categorys');
 
         $scope.deleteCurrentCategory = function (category) {
 

@@ -1,4 +1,4 @@
-xdescribe('CategoryAddCtrl', function () {
+describe('CategoryAddCtrl', function () {
 
   var $scope, createController, categoryService;
 
