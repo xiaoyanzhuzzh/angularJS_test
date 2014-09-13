@@ -30,7 +30,7 @@ describe('Controller: ItemsListCtrl', function () {
                    {barcode:'ITEM000001', name: '雪碧', unit:'瓶', price:3.00, category:'饮品'}
                 ];
 
-            spyOn(itemsService, 'getItems').andReturn(items);
+            spyOn(Util.localStorage, 'getStorageItem').andReturn(items);
             createController();
 
       });
@@ -65,16 +65,11 @@ describe('Controller: ItemsListCtrl', function () {
 
       it ('should load cartItems from localStorage', function () {
 
-        spyOn(Util.localStorage, 'getStorageItem').andReturn(
-
-          [{item: {barcode:'ITEM000001', name: '雪碧', unit:'瓶', price:3.00, category:'饮品'},number: 1}]
-        );
+        spyOn(Util.localStorage, 'getStorageItem');
 
         createController();
 
-        expect($scope.cartItems.length).toBe(1);
-        expect($scope.cartItems[0].number).toEqual(1);
-        expect(Util.localStorage.getStorageItem.calls.length).toBe(1);
+        expect(Util.localStorage.getStorageItem.calls.length).toBe(2);
       });
     });
 
@@ -96,7 +91,7 @@ describe('Controller: ItemsListCtrl', function () {
 
         $scope.addToCart(item[0]);
 
-        expect(Util.localStorage.getStorageItem.calls.length).toBe(1);
+        expect(Util.localStorage.getStorageItem.calls.length).toBe(2);
         expect(addToCartService.isExistInCart.calls.length).toBe(1);
       });
     });
@@ -126,8 +121,8 @@ describe('Controller: ItemsListCtrl', function () {
 
         expect($scope.cartItems.length).toBe(2);
         expect(addToCartService.isExistInCart.calls.length).toBe(1);
-        expect(Util.localStorage.getStorageItem.calls.length).toBe(1);
-        expect(Util.localStorage.setStorageItem.calls.length).toBe(2);
+        expect(Util.localStorage.getStorageItem.calls.length).toBe(2);
+        expect(Util.localStorage.setStorageItem.calls.length).toBe(1);
 
         expect($scope.cartItems[0].number).toBe(1);
         expect($scope.cartItems[0].item.barcode).toBe('ITEM000001');
@@ -147,8 +142,8 @@ describe('Controller: ItemsListCtrl', function () {
 
         expect($scope.cartItems.length).toBe(1);
         expect(addToCartService.isExistInCart.calls.length).toBe(1);
-        expect(Util.localStorage.getStorageItem.calls.length).toBe(1);
-        expect(Util.localStorage.setStorageItem.calls.length).toBe(2);
+        expect(Util.localStorage.getStorageItem.calls.length).toBe(2);
+        expect(Util.localStorage.setStorageItem.calls.length).toBe(1);
 
         expect($scope.cartItems[0].number).toBe(1);
         expect($scope.cartItems[0].item.barcode).toBe('ITEM000001');
