@@ -2,8 +2,8 @@
 
 
 angular.module('myYoApp')
-  .controller('HomeCtrl', function ($scope, categoryService) {
+  .controller('HomeCtrl', function ($scope, itemsService, categoryService) {
 
     $scope.items = itemsService.getItems();
-    categoryService.getCategorysAndId($scope.items);
+    $scope.categorys = categoryService.getCategorysAndId($scope.items);
   });
