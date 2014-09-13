@@ -1,4 +1,4 @@
-xdescribe('ItemModifyCtrl', function () {
+describe('ItemModifyCtrl', function () {
 
   var $scope, createController, categoryService, itemManagementService;
 
@@ -26,29 +26,16 @@ xdescribe('ItemModifyCtrl', function () {
 
   it ('should load items from localStorage', function () {
 
-    spyOn(Util.localStorage, 'getStorageItem').andReturn(
-
-      [{barcode:'ITEM000001', name: '雪碧', unit:'瓶', price:3.00, category:'饮品'}]
-    );
+    spyOn(Util.localStorage, 'getStorageItem');
     createController();
-
-    expect($scope.items.length).toEqual(1);
-    expect($scope.items[0].name).toEqual('雪碧');
-    expect($scope.items[0].unit).toEqual('瓶');
-    expect($scope.items[0].category).toEqual('饮品');
 
     expect(Util.localStorage.getStorageItem.calls.length).toBe(2);
   });
 
   it ('should load categorys from localStorage', function () {
 
-    spyOn(Util.localStorage, 'getStorageItem').andReturn([{id: 0, name: '雪碧'}]);
-
+    spyOn(Util.localStorage, 'getStorageItem');
     createController();
-
-    expect($scope.categorys.length).toEqual(1);
-    expect($scope.categorys[0].name).toEqual('雪碧');
-    expect($scope.categorys[0].id).toEqual(0);
 
     expect(Util.localStorage.getStorageItem.calls.length).toBe(2);
   });
