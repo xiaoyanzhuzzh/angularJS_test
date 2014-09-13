@@ -9,9 +9,10 @@ angular.module('myYoApp')
 
         $scope.modifySignal = false;
 
-        $scope.modifyCurrentCategory = function () {
+        $scope.modifyCurrentCategory = function (changingCategory) {
 
           $scope.modifySignal = true;
+          Util.localStorage.setStorageItem('changingCategory', changingCategory);
         };
 
         $scope.cancelModify = function () {
@@ -28,6 +29,7 @@ angular.module('myYoApp')
         $scope.changeCurrentCategory = function (category) {
 
           $scope.categorys = categoryService.changeCategory(category, $scope.categorys);
+
           $scope.items = categoryService.changeItem(category, $scope.items);
         };
 
