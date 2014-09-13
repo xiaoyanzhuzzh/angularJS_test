@@ -149,30 +149,37 @@ describe('categoryService', function () {
 
         items = [{barcode:'ITEM000001', name: '雪碧', unit:'瓶', price:3.00, category:'饮品'}];
         spyOn(Util.localStorage,'setStorageItem');
+
       });
 
-      it('should have changeItem function and return changed items', function(){
-
-        category = {id: 1, name: '饮品'};
-
-        var result = categoryService.changeItem(category, items);
-
-        expect(result.length).toBe(1);
-        expect(result[0].category).toEqual('饮品');
-        expect(result[0].name).toEqual('雪碧');
-        expect(Util.localStorage.setStorageItem.calls.length).toBe(1);
-      });
+      // it('should have changeItem function and return changed items', function(){
+      //
+      //   spyOn(Util.localStorage,'getStorageItem').andReturn([{id: 0, name:'饮品'}]);
+      //   category = {id: 0, name: '饮品t'};
+      //
+      //   var result = categoryService.changeItem(category, items);
+      //
+      //   expect(result.length).toBe(1);
+      //   expect(result[0].category).toEqual('饮品t');
+      //   expect(result[0].name).toEqual('雪碧');
+      //
+      //   expect(Util.localStorage.setStorageItem.calls.length).toBe(1);
+      //   expect(Util.localStorage.getStorageItem.calls.length).toBe(1);
+      // });
 
       it('should have changeItem function and return the same items', function(){
 
-        category = {id: 0, name: '水果'};
+        spyOn(Util.localStorage,'getStorageItem').andReturn([{id: 0, name:'水果'}]);
+        category = {id: 0, name: '水果f'};
 
         var result = categoryService.changeItem(category, items);
 
         expect(result.length).toBe(1);
         expect(result[0].category).toEqual('饮品');
         expect(result[0].name).toEqual('雪碧');
+
         expect(Util.localStorage.setStorageItem.calls.length).toBe(1);
+        expect(Util.localStorage.getStorageItem.calls.length).toBe(1);
       });
    });
 });

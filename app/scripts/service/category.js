@@ -74,11 +74,13 @@ angular.module('myYoApp')
         this.changeItem = function (category, items) {
 
           var changingCategory = Util.localStorage.getStorageItem('changingCategory');
+
           for(var i = 0; i < items.length; i++){
 
             if(items[i].category === changingCategory.name){
 
               items[i].category = category.name;
+              console.log(category.name);
               Util.localStorage.setStorageItem('changingCategory', category);
             }
           }
