@@ -76,7 +76,7 @@ xdescribe('itemManagementService', function () {
         );
         spyOn(Util.localStorage,'setStorageItem');
 
-        var result = itemManagementService.modifyItem(,newItem, items);
+        var result = itemManagementService.modifyItem(newItem, items);
 
         expect(result.length).toBe(1);
         expect(result[0].name).toEqual('雪碧');

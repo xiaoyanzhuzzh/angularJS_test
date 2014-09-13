@@ -62,8 +62,8 @@ xdescribe('categoryService', function () {
         var result = categoryService.deleteCategory(category, categorys);
 
         expect(result.length).toBe(1);
-        expect(result[0].name).toEqual('水果')；
-        expect(result[0].id).toEqual(0)
+        expect(result[0].name).toEqual('水果');
+        expect(result[0].id).toEqual(0);
         expect(Util.localStorage.setStorageItem.calls.length).toBe(1);
       });
     });
@@ -95,7 +95,7 @@ xdescribe('categoryService', function () {
         var result = categoryService.deleteItem(category, items);
 
         expect(result.length).toBe(1);
-        expect(result[0].category).toEqual('水果')；
+        expect(result[0].category).toEqual('水果');
         expect(result[0].name).toEqual('雪碧');
         expect(Util.localStorage.setStorageItem.calls.length).toBe(1);
       });
@@ -154,7 +154,7 @@ xdescribe('categoryService', function () {
         var result = categoryService.changeItem(category, items);
 
         expect(result.length).toBe(1);
-        expect(result[0].category).toEqual('饮品')；
+        expect(result[0].category).toEqual('饮品');
         expect(result[0].name).toEqual('雪碧');
         expect(Util.localStorage.setStorageItem.calls.length).toBe(1);
       });
@@ -166,7 +166,7 @@ xdescribe('categoryService', function () {
         var result = categoryService.changeItem(category, items);
 
         expect(result.length).toBe(1);
-        expect(result[0].category).toEqual('饮品')；
+        expect(result[0].category).toEqual('饮品');
         expect(result[0].name).toEqual('雪碧');
         expect(Util.localStorage.setStorageItem.calls.length).toBe(1);
       });
