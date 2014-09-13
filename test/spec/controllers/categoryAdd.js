@@ -85,13 +85,14 @@ describe('CategoryAddCtrl', function () {
     });
   });
 
-  xdescribe('addNewCategory function', function () {
+  describe('addNewCategory function', function () {
 
     it('should add new category to categorys', function () {
 
       var newCategory = '饮品';
 
       spyOn(Util.localStorage, 'setStorageItem');
+      spyOn(Util.localStorage, 'getStorageItem').andReturn([{id: 0, name: '雪碧'}]);
 
       createController();
       $scope.addNewCategory(newCategory);

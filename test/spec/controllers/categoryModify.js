@@ -67,7 +67,7 @@ describe('CategoryModifyCtrl', function () {
     });
   });
 
-  xdescribe('deleteCurrentCategory function', function () {
+  describe('deleteCurrentCategory function', function () {
 
     it('should delete current categorys and items', function () {
 
