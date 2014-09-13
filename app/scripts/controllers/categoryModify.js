@@ -7,17 +7,22 @@ angular.module('myYoApp')
 
         $scope.categorys = Util.localStorage.getStorageItem('categorys');
 
-        $scope.deleteCurrentCategory = function (category) {
-
-          $scope.categorys = categoryService.deleteCategory(category, $scope.categorys);
-          $scope.items = categoryService.deleteItem(category, $scope.items);
-        };
-
         $scope.modifySignal = false;
 
         $scope.modifyCurrentCategory = function () {
 
           $scope.modifySignal = true;
+        };
+
+        $scope.cancelModify = function () {
+
+          $scope.modifySignal = false;
+        };
+
+        $scope.deleteCurrentCategory = function (category) {
+
+          $scope.categorys = categoryService.deleteCategory(category, $scope.categorys);
+          $scope.items = categoryService.deleteItem(category, $scope.items);
         };
 
         $scope.changeCurrentCategory = function (category) {
@@ -26,8 +31,5 @@ angular.module('myYoApp')
           $scope.items = categoryService.changeItem(category, $scope.items);
         };
 
-        $scope.cancelModify = function () {
 
-          $scope.modifySignal = false;
-        };
     });
