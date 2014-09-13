@@ -20,11 +20,19 @@ angular.module('myYoApp')
           $scope.showItemSignal = false;
         };
 
+        $scope.deleteCurrentItem = function (item) {
+
+          $scope.items = itemManagementService.deleteItem($scope.items, item);
+        };
+
         $scope.addNewItem = function (item, categoryName) {
 
          item.category = categoryName;
+
          $scope.items.push(item);
+
          Util.localStorage.setStorageItem('items', $scope.items);
+
          $scope.showItemSignal = false;
         }
     });
