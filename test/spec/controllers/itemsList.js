@@ -1,4 +1,4 @@
-xdescribe('Controller: ItemsListCtrl', function () {
+describe('Controller: ItemsListCtrl', function () {
 
    var $scope, itemsService, createController, addToCartService;
 

@@ -1,4 +1,4 @@
-xdescribe('itemsService', function () {
+describe('itemsService', function () {
 
     var itemsService;
 
