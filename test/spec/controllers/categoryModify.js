@@ -83,17 +83,18 @@ describe('CategoryModifyCtrl', function () {
       expect($scope.items.length).toBe(0);
       expect($scope.categorys.length).toEqual(0);
 
-      expect(Util.localStorage.getStorageItem.calls.length).toBe(1);
+      expect(Util.localStorage.getStorageItem.calls.length).toBe(2);
       expect(categoryService.deleteItem.calls.length).toEqual(1);
       expect(categoryService.deleteCategory.calls.length).toBe(1);
     });
   });
 
-  xdescribe('changeCurrentCategory function', function () {
+  describe('changeCurrentCategory function', function () {
 
     it('should add change category to categorys', function () {
 
       var category = {id: 0, name: '饮品'};
+
       spyOn(Util.localStorage, 'getStorageItem');
       spyOn(categoryService, 'changeCategory').andReturn([{id: 0, name: '雪碧'}]);
       spyOn(categoryService, 'changeItem').andReturn(
@@ -107,7 +108,7 @@ describe('CategoryModifyCtrl', function () {
       expect($scope.categorys.length).toEqual(1);
       expect($scope.items.length).toEqual(1);
 
-      expect(Util.localStorage.getStorageItem.calls.length).toBe(1);
+      expect(Util.localStorage.getStorageItem.calls.length).toBe(2);
       expect(categoryService.changeCategory.calls.length).toBe(1);
       expect(categoryService.changeItem.calls.length).toBe(1);
     });
