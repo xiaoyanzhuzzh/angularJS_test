@@ -2,11 +2,11 @@
 
 
 angular.module('myYoApp')
-    .controller('ItemsListCtrl', function ($scope, itemsService, addToCartService) {
+    .controller('ItemsListCtrl', function ($scope,itemsService, addToCartService) {
 
-        $scope.items = Util.localStorage.getStorageItem('items');
+        $scope.items = itemsService.get('items');
 
-        $scope.cartItems = Util.localStorage.getStorageItem('cartItems');
+        $scope.cartItems = itemsService.get('cartItems');
 
         $scope.addToCart = function(item) {
 
@@ -16,16 +16,6 @@ angular.module('myYoApp')
             $scope.cartItems = [];
           }
 
-          var cartItem = addToCartService.isExistInCart(item.barcode, $scope.cartItems);
-
-          if (cartItem) {
-            cartItem.number += 1;
-          }
-          else{
-            $scope.cartItems.push({item: item, number: 1});
-          }
-
-          Util.localStorage.setStorageItem('cartItems', $scope.cartItems);
-
+          addToCartService.getCartItems(item, $scope.cartItems);
         };
   });
