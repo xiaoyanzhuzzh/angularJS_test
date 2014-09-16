@@ -1,6 +1,7 @@
+'use strict';
 describe('CategoryAddCtrl', function () {
 
-  var $scope, createController, categoryService;
+  var $scope, createController, categoryService, itemsService;
 
   beforeEach(function () {
        module('myYoApp');
@@ -9,6 +10,7 @@ describe('CategoryAddCtrl', function () {
 
            $scope = $injector.get('$rootScope').$new();
            categoryService = $injector.get('categoryService');
+           itemsService = $injector.get('itemsService');
 
            var $controller = $injector.get('$controller');
 
@@ -16,7 +18,8 @@ describe('CategoryAddCtrl', function () {
 
              return $controller ('CategoryAddCtrl', {
                   $scope: $scope,
-                  categoryService: categoryService
+                  categoryService: categoryService,
+                  itemsService: itemsService
              });
            };
        });
@@ -24,18 +27,18 @@ describe('CategoryAddCtrl', function () {
 
   it ('should load items from localStorage', function () {
 
-    spyOn(Util.localStorage, 'getStorageItem');
+    spyOn(itemsService, 'get');
     createController();
 
-    expect(Util.localStorage.getStorageItem.calls.length).toBe(2);
+    expect(itemsService.get.calls.length).toBe(2);
   });
 
   it ('should load categorys from localStorage', function () {
 
-    spyOn(Util.localStorage, 'getStorageItem');
+    spyOn(itemsService, 'get');
     createController();
 
-    expect(Util.localStorage.getStorageItem.calls.length).toBe(2);
+    expect(itemsService.get.calls.length).toBe(2);
   });
 
   it ('should have showSignal', function () {
@@ -91,13 +94,13 @@ describe('CategoryAddCtrl', function () {
 
       var newCategory = '饮品';
 
-      spyOn(Util.localStorage, 'setStorageItem');
-      spyOn(Util.localStorage, 'getStorageItem').andReturn([{id: 0, name: '雪碧'}]);
+      spyOn(itemsService, 'set');
+      spyOn(itemsService, 'get').andReturn([{id: 0, name: '雪碧'}]);
 
       createController();
       $scope.addNewCategory(newCategory);
 
-      expect(Util.localStorage.setStorageItem.calls.length).toBe(1);
+      expect(itemsService.set.calls.length).toBe(1);
     });
   });
 });
