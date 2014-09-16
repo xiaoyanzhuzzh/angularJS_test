@@ -1,5 +1,6 @@
+'use strict';
 describe('CartItemsListCtrl', function () {
-  var $scope, createController, cartItemOperateService;
+  var $scope, createController, cartItemOperateService, itemsService;
    beforeEach(function () {
 
      module('myYoApp');
@@ -8,6 +9,7 @@ describe('CartItemsListCtrl', function () {
 
        $scope = $injector.get('$rootScope').$new();
        cartItemOperateService = $injector.get('cartItemOperateService');
+       itemsService = $injector.get('itemsService');
 
        var $controller = $injector.get('$controller');
 
@@ -15,50 +17,47 @@ describe('CartItemsListCtrl', function () {
 
          return $controller ('CartItemsListCtrl', {
            $scope: $scope,
-           cartItemOperateService: cartItemOperateService
+           cartItemOperateService: cartItemOperateService,
+           itemsService: itemsService
          });
        };
      });
    });
 
-  describe('cartItems', function () {
+  describe('cartItems function', function () {
 
     it('should load cartItems', function () {
-      spyOn(Util.localStorage, 'getStorageItem').andReturn(
-        [{item: {barcode:'ITEM000001', name: '雪碧', unit:'瓶', price:3.00, category:'饮品'},number: 1}]
-      );
+
+      spyOn(itemsService, 'get');
       createController();
 
-      expect($scope.cartItems.length).toBe(1);
-      expect($scope.cartItems[0].number).toEqual(1);
-      expect($scope.cartItems[0].item.barcode).toEqual('ITEM000001');
-      expect(Util.localStorage.getStorageItem.calls.length).toBe(1);
+      expect(itemsService.get.calls.length).toBe(1);
     });
   });
 
   describe('total', function () {
 
-    it('should load total', function () {
+    it('should load total money', function () {
 
-      spyOn(Util.localStorage, 'getStorageItem');
+      spyOn(itemsService, 'get');
       spyOn(cartItemOperateService,'getTotalMoney').andReturn(3);
       createController();
 
       expect($scope.total).toBe(3);
-      expect(Util.localStorage.getStorageItem.calls.length).toBe(1);
+      expect(itemsService.get.calls.length).toBe(1);
     });
   });
 
   describe('totalNumber', function () {
 
-    it('should load totalNumber', function () {
+    it('should load total number', function () {
 
-      spyOn(Util.localStorage, 'getStorageItem');
+      spyOn(itemsService, 'get');
       spyOn(cartItemOperateService,'getTotalNumber').andReturn(1);
       createController();
 
       expect($scope.totalNumber).toBe(1);
-      expect(Util.localStorage.getStorageItem.calls.length).toBe(1);
+      expect(itemsService.get.calls.length).toBe(1);
     });
   });
 
