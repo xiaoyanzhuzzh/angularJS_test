@@ -3,9 +3,9 @@
 angular.module('myYoApp')
     .controller('CategoryModifyCtrl', function ($scope, itemsService, categoryService) {
 
-        $scope.items =itemsService.get('items');
+        $scope.items = itemsService.get('items');
 
-        $scope.categorys =itemsService.get('categorys');
+        $scope.categorys = itemsService.get('categorys');
 
         $scope.modifySignal = false;
 
