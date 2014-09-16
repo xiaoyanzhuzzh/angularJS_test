@@ -1,18 +1,18 @@
 'use strict';
 
 angular.module('myYoApp')
-    .controller('CategoryModifyCtrl', function ($scope, categoryService) {
+    .controller('CategoryModifyCtrl', function ($scope, itemsService, categoryService) {
 
-        $scope.items = Util.localStorage.getStorageItem('items');
+        $scope.items =itemsService.get('items');
 
-        $scope.categorys = Util.localStorage.getStorageItem('categorys');
+        $scope.categorys =itemsService.get('categorys');
 
         $scope.modifySignal = false;
 
         $scope.modifyCurrentCategory = function (changingCategory) {
 
           $scope.modifySignal = true;
-          Util.localStorage.setStorageItem('changingCategory', changingCategory);
+          itemsService.set('changingCategory', changingCategory);
         };
 
         $scope.cancelModify = function () {
