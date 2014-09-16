@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('myYoApp')
-    .service('itemsService',function(){
+    .service('itemsService',function(localStorageService){
 
         this.getItems = function(){
           var items = [
@@ -13,7 +13,17 @@ angular.module('myYoApp')
               {barcode:'ITEM000005', name:'方便面', unit:'袋',price: 4.50, category:'零食'},
            ];
 
-          Util.localStorage.setStorageItem('items',items);
+          localStorageService.set('items',items);
           return items;
+         };
+
+         this.get = function (key){
+
+           localStorageService.get(key);
+         };
+
+         this.set = function(key ,value){
+           
+           localStorageService.set(key, value);
          };
     });
