@@ -1,12 +1,16 @@
+'use strict';
 describe('CartPayListCtrl', function () {
-   var $scope, cartItemOperateService, createController;
-  beforeEach(function () {
+
+   var $scope, itemsService, cartItemOperateService, createController;
+   beforeEach(function () {
+
     module('myYoApp');
 
     inject(function ($injector) {
 
       $scope = $injector.get('$rootScope').$new();
       cartItemOperateService = $injector.get('cartItemOperateService');
+      itemsService = $injector.get('itemsService');
 
       var $controller = $injector.get('$controller');
 
@@ -14,7 +18,8 @@ describe('CartPayListCtrl', function () {
 
         return $controller ('CartPayListCtrl', {
           $scope: $scope,
-          cartItemOperateService: cartItemOperateService
+          cartItemOperateService: cartItemOperateService,
+          itemsService: itemsService
         });
       };
     });
@@ -22,23 +27,18 @@ describe('CartPayListCtrl', function () {
 
   describe('cartPayList', function () {
     it('should load cartPayList', function () {
-      spyOn(Util.localStorage, 'getStorageItem').andReturn(
 
-        [{item: {barcode:'ITEM000001', name: '雪碧', unit:'瓶', price:3.00, category:'饮品'},number: 1}]
-      );
+      spyOn(itemsService, 'get');
       createController();
 
-      expect($scope.cartPayList.length).toBe(1);
-      expect($scope.cartPayList[0].number).toEqual(1);
-      expect($scope.cartPayList[0].item.barcode).toEqual('ITEM000001');
-      expect(Util.localStorage.getStorageItem.calls.length).toBe(1);
+      expect(itemsService.get.calls.length).toBe(1);
     });
 
     describe('totalMoney', function () {
 
       beforeEach(function () {
 
-        spyOn(Util.localStorage, 'getStorageItem');
+        spyOn(itemsService, 'get');
         spyOn(cartItemOperateService,'getTotalMoney').andReturn(1);
         createController();
       });
@@ -54,7 +54,7 @@ describe('CartPayListCtrl', function () {
 
       beforeEach(function () {
 
-        spyOn(Util.localStorage, 'getStorageItem');
+        spyOn(itemsService, 'get');
         spyOn(cartItemOperateService,'getTotalNumber').andReturn(1);
         createController();
       });
@@ -63,7 +63,7 @@ describe('CartPayListCtrl', function () {
 
         expect($scope.totalNumber).toEqual(1);
         expect(cartItemOperateService.getTotalNumber.calls.length).toBe(1);
-        expect(Util.localStorage.getStorageItem.calls.length).toBe(1);
+        expect(itemsService.get.calls.length).toBe(1);
       });
     });
   });
