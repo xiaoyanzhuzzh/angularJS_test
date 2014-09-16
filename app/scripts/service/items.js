@@ -19,11 +19,11 @@ angular.module('myYoApp')
 
          this.get = function (key){
 
-           localStorageService.get(key);
+           return localStorageService.get(key);
          };
 
          this.set = function(key ,value){
-           
+
            localStorageService.set(key, value);
          };
     });

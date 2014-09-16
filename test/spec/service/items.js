@@ -1,6 +1,7 @@
+'use strict';
 describe('itemsService', function () {
 
-    var itemsService;
+    var itemsService,localStorageService;
 
     beforeEach(function () {
 
@@ -9,6 +10,7 @@ describe('itemsService', function () {
         inject(function ($injector) {
 
             itemsService = $injector.get('itemsService');
+            localStorageService = $injector.get('localStorageService');
         });
     });
 
@@ -21,5 +23,4 @@ describe('itemsService', function () {
       expect(items[1].name).toEqual('雪碧');
       expect(items[2].category).toEqual('水果');
     });
-
 });
