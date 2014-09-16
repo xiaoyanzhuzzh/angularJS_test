@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('myYoApp')
-  .controller('CartItemsListCtrl', function ($scope, cartItemOperateService) {
+  .controller('CartItemsListCtrl', function ($scope, itemsService, cartItemOperateService) {
 
   function getTotalNumber(cartItems) {
     return cartItemOperateService.getTotalNumber(cartItems);
@@ -21,7 +21,7 @@ angular.module('myYoApp')
     $scope.$parent.cartCount = getTotalNumber($scope.cartItems);
   }
 
-  $scope.cartItems = Util.localStorage.getStorageItem('cartItems');
+  $scope.cartItems = itemsService.get('cartItems');
 
   updateTotalAndTotalNumber();
 
