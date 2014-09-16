@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('myYoApp')
-  .service('itemManagementService', function(){
+  .service('itemManagementService', function(localStorageService){
 
         this.deleteItem = function (items, item) {
 
@@ -10,7 +10,7 @@ angular.module('myYoApp')
             if(item.name === items[i].name){
 
               items = _.without(items, items[i]);
-              Util.localStorage.setStorageItem('items', items);
+              localStorageService.set('items', items);
             }
           }
           return items;
@@ -18,7 +18,7 @@ angular.module('myYoApp')
 
         this.modifyItem = function (newItem, items) {
 
-          var changingItem = Util.localStorage.getStorageItem('changingItem');
+          var changingItem = localStorageService.get('changingItem');
 
           for (var i = 0; i < items.length; i++) {
 
@@ -29,7 +29,7 @@ angular.module('myYoApp')
               items[i].price = newItem.price;
             }
           }
-          Util.localStorage.setStorageItem('items', items);
+          localStorageService.set('items', items);
           return items;
         };
   });
