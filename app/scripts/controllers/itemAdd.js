@@ -1,6 +1,5 @@
 'use strict';
 
-
 angular.module('myYoApp')
     .controller('ItemAddCtrl', function ($scope, itemsService, itemManagementService) {
 
