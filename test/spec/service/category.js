@@ -1,6 +1,8 @@
+
+'use strict';
 describe('categoryService', function () {
 
-    var categoryService;
+    var categoryService, localStorageService;
 
     beforeEach(function () {
 
@@ -9,6 +11,7 @@ describe('categoryService', function () {
         inject(function ($injector) {
 
             categoryService = $injector.get('categoryService');
+            localStorageService = $injector.get('localStorageService');
         });
     });
 
@@ -25,7 +28,7 @@ describe('categoryService', function () {
       var items = [{barcode:'ITEM000001', name: '雪碧', unit:'瓶', price:3.00, category:'饮品'}];
 
       spyOn(categoryService, 'getCategorys').andReturn(['饮品']);
-      spyOn(Util.localStorage,'setStorageItem');
+      spyOn(localStorageService,'set');
 
       var categorys = categoryService.getCategorysAndId(items);
 
@@ -33,7 +36,7 @@ describe('categoryService', function () {
       expect(categorys[0].id).toEqual(0);
       expect(categorys[0].name).toEqual('饮品');
 
-      expect(Util.localStorage.setStorageItem.calls.length).toBe(1);
+      expect(localStorageService.set.calls.length).toBe(1);
       expect(categoryService.getCategorys.calls.length).toBe(1);
     });
 
@@ -44,7 +47,7 @@ describe('categoryService', function () {
       beforeEach (function () {
 
         categorys = [{id: 0, name: '饮品'}];
-        spyOn(Util.localStorage,'setStorageItem');
+        spyOn(localStorageService,'set');
       });
 
       it('should have deleteCategory function and return categorys is a empty array', function(){
@@ -54,7 +57,7 @@ describe('categoryService', function () {
         var result = categoryService.deleteCategory(category, categorys);
 
         expect(result.length).toBe(0);
-        expect(Util.localStorage.setStorageItem.calls.length).toBe(1);
+        expect(localStorageService.set.calls.length).toBe(1);
       });
 
       it('should have deleteCategory function and return categorys is the same array', function(){
@@ -67,7 +70,7 @@ describe('categoryService', function () {
         expect(result[0].name).toEqual('饮品');
         expect(result[0].id).toEqual(0);
 
-        expect(Util.localStorage.setStorageItem.calls.length).toBe(0);
+        expect(localStorageService.set.calls.length).toBe(0);
       });
     });
 
@@ -78,7 +81,7 @@ describe('categoryService', function () {
       beforeEach (function () {
 
         items = [{barcode:'ITEM000001', name: '雪碧', unit:'瓶', price:3.00, category:'饮品'}];
-        spyOn(Util.localStorage,'setStorageItem');
+        spyOn(localStorageService,'set');
       });
 
       it('should have deleteItem function and return items is a empty array', function(){
@@ -88,7 +91,7 @@ describe('categoryService', function () {
         var result = categoryService.deleteItem(category, items);
 
         expect(result.length).toBe(0);
-        expect(Util.localStorage.setStorageItem.calls.length).toBe(1);
+        expect(localStorageService.set.calls.length).toBe(1);
       });
 
       it('should have deleteItem function and return categorys is the same array', function(){
@@ -101,7 +104,7 @@ describe('categoryService', function () {
         expect(result[0].category).toEqual('饮品');
         expect(result[0].name).toEqual('雪碧');
 
-        expect(Util.localStorage.setStorageItem.calls.length).toBe(1);
+        expect(localStorageService.set.calls.length).toBe(1);
       });
     });
 
@@ -112,7 +115,7 @@ describe('categoryService', function () {
       beforeEach (function () {
 
         categorys = [{id: 0, name: '饮品'}];
-        spyOn(Util.localStorage,'setStorageItem');
+        spyOn(localStorageService,'set');
       });
 
       it('should have changeCategory function and return changed categorys', function(){
@@ -124,7 +127,7 @@ describe('categoryService', function () {
         expect(result.length).toBe(1);
         expect(result[0].name).toEqual('饮品');
         expect(result[0].id).toBe(0);
-        expect(Util.localStorage.setStorageItem.calls.length).toBe(1);
+        expect(localStorageService.set.calls.length).toBe(1);
       });
 
       it('should have changeCategory function and return the same categorys', function(){
@@ -136,7 +139,7 @@ describe('categoryService', function () {
         expect(result.length).toBe(1);
         expect(result[0].name).toEqual('饮品');
         expect(result[0].id).toBe(0);
-        expect(Util.localStorage.setStorageItem.calls.length).toBe(0);
+        expect(localStorageService.set.calls.length).toBe(0);
       });
     });
 
@@ -148,13 +151,13 @@ describe('categoryService', function () {
       beforeEach(function () {
 
         items = [{barcode:'ITEM000001', name: '雪碧', unit:'瓶', price:3.00, category:'饮品'}];
-        spyOn(Util.localStorage,'setStorageItem');
+        spyOn(localStorageService,'set');
 
       });
 
       // it('should have changeItem function and return changed items', function(){
       //
-      //   spyOn(Util.localStorage,'getStorageItem').andReturn([{id: 0, name:'饮品'}]);
+      //   spyOn(localStorageService,'get').andReturn([{id: 0, name:'饮品'}]);
       //   category = {id: 0, name: '饮品t'};
       //
       //   var result = categoryService.changeItem(category, items);
@@ -163,13 +166,13 @@ describe('categoryService', function () {
       //   expect(result[0].category).toEqual('饮品t');
       //   expect(result[0].name).toEqual('雪碧');
       //
-      //   expect(Util.localStorage.setStorageItem.calls.length).toBe(1);
-      //   expect(Util.localStorage.getStorageItem.calls.length).toBe(1);
+      //   expect(localStorageService.set.calls.length).toBe(1);
+      //   expect(localStorageService.get.calls.length).toBe(1);
       // });
 
       it('should have changeItem function and return the same items', function(){
 
-        spyOn(Util.localStorage,'getStorageItem').andReturn([{id: 0, name:'水果'}]);
+        spyOn(localStorageService,'get').andReturn([{id: 0, name:'水果'}]);
         category = {id: 0, name: '水果f'};
 
         var result = categoryService.changeItem(category, items);
@@ -178,8 +181,8 @@ describe('categoryService', function () {
         expect(result[0].category).toEqual('饮品');
         expect(result[0].name).toEqual('雪碧');
 
-        expect(Util.localStorage.setStorageItem.calls.length).toBe(1);
-        expect(Util.localStorage.getStorageItem.calls.length).toBe(1);
+        expect(localStorageService.set.calls.length).toBe(1);
+        expect(localStorageService.get.calls.length).toBe(1);
       });
    });
 });
