@@ -2,7 +2,7 @@
 
 
 angular.module('myYoApp')
-    .controller('ItemsListCtrl', function ($scope,itemsService, addToCartService) {
+    .controller('ItemsListCtrl', function ($scope, itemsService, addToCartService) {
 
         $scope.items = itemsService.get('items');
 
@@ -15,7 +15,6 @@ angular.module('myYoApp')
           if (!$scope.cartItems) {
             $scope.cartItems = [];
           }
-
           addToCartService.getCartItems(item, $scope.cartItems);
         };
   });
