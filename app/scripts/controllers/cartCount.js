@@ -4,7 +4,6 @@
 angular.module('myYoApp')
     .controller('addCartCountCtrl', function ($scope, itemsService) {
 
-
         $scope.cartCount = itemsService.get('cartCount');
 
         $scope.addCartCount = function(){
