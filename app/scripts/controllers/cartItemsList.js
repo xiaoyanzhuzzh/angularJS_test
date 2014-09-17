@@ -21,6 +21,7 @@ angular.module('myYoApp')
     $scope.$parent.cartCount = getTotalNumber($scope.cartItems);
   }
 
+  $scope.$emit('to-parent-cartItemsListActive');
   $scope.cartItems = itemsService.get('cartItems');
 
   updateTotalAndTotalNumber();

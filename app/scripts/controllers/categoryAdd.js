@@ -3,6 +3,8 @@
 angular.module('myYoApp')
     .controller('CategoryAddCtrl', function ($scope, itemsService, categoryService) {
 
+        $scope.$emit('to-parent-categoryManagementActive');
+
         $scope.items = itemsService.get('items');
 
         $scope.categorys = itemsService.get('categorys');

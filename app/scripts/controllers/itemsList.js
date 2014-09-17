@@ -4,17 +4,19 @@
 angular.module('myYoApp')
     .controller('ItemsListCtrl', function ($scope, itemsService, addToCartService) {
 
-        $scope.items = itemsService.get('items');
+      $scope.$emit('to-parent-itemsListActive');
 
-        $scope.cartItems = itemsService.get('cartItems');
+      $scope.items = itemsService.get('items');
 
-        $scope.addToCart = function(item) {
+      $scope.cartItems = itemsService.get('cartItems');
 
-          // $scope.$parent.addCartCount();
+      $scope.addToCart = function(item) {
 
-          if (!$scope.cartItems) {
-            $scope.cartItems = [];
-          }
-          addToCartService.getCartItems(item, $scope.cartItems);
-        };
+        $scope.$emit('to-parent-cartCount').addCartCount();
+
+        if (!$scope.cartItems) {
+          $scope.cartItems = [];
+        }
+        addToCartService.getCartItems(item, $scope.cartItems);
+      };
   });
