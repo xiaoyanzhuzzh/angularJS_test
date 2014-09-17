@@ -4,8 +4,6 @@
 angular.module('myYoApp')
   .controller('ItemModifyCtrl', function ($scope, itemsService, categoryService, itemManagementService) {
 
-    $scope.$emit('to-parent-itemManagementActive');
-
     $scope.items = itemsService.get('items');
 
     $scope.categorys = itemsService.get('categorys');

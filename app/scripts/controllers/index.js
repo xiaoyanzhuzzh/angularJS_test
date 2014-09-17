@@ -20,8 +20,6 @@ angular.module('myYoApp')
           $scope.itemsListActive = false;
           $scope.cartItemsListActive = false;
           $scope.cartPayListActive = false;
-          $scope.categoryManagement = false;
-          $scope.itemManagement = false;
       });
 
       $scope.$on('to-parent-itemsListActive', function () {
@@ -29,8 +27,6 @@ angular.module('myYoApp')
           $scope.itemsListActive = true;
           $scope.cartItemsListActive = false;
           $scope.cartPayListActive = false;
-          $scope.categoryManagement = false;
-          $scope.itemManagement = false;
       });
 
       $scope.$on('to-parent-cartItemsListActive', function () {
@@ -38,8 +34,6 @@ angular.module('myYoApp')
           $scope.itemsListActive = false;
           $scope.cartItemsListActive = true;
           $scope.cartPayListActive = false;
-          $scope.categoryManagement = false;
-          $scope.itemManagement = false;
       });
 
       $scope.$on('to-parent-cartPayListActive', function () {
@@ -47,25 +41,5 @@ angular.module('myYoApp')
           $scope.itemsListActive = false;
           $scope.cartItemsListActive = false;
           $scope.cartPayListActive = true;
-          $scope.categoryManagement = false;
-          $scope.itemManagement = false;
       });
-
-      $scope.$on('to-parent-categoryManagementActive', function () {
-          $scope.homeActive = false;
-          $scope.itemsListActive = false;
-          $scope.cartItemsListActive = false;
-          $scope.cartPayListActive = false;
-          $scope.categoryManagement = true;
-          $scope.itemManagement = false;
-      });
-
-      $scope.$on('to-parent-itemManagementActive', function () {
-          $scope.homeActive = false;
-          $scope.itemsListActive = false;
-          $scope.cartItemsListActive = false;
-          $scope.cartPayListActive = false;
-          $scope.categoryManagement = false;
-          $scope.itemManagement = true;
-      });
-    });
+});
