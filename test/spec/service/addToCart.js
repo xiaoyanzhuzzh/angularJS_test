@@ -1,7 +1,7 @@
 'use strict';
 describe('addToCartService', function () {
 
-    var addToCartService;
+    var addToCartService, localStorageService;
 
     beforeEach(function () {
 
@@ -10,6 +10,7 @@ describe('addToCartService', function () {
         inject(function ($injector) {
 
             addToCartService = $injector.get('addToCartService');
+            localStorageService = $injector.get('localStorageService');
         });
     });
 
@@ -40,5 +41,20 @@ describe('addToCartService', function () {
       var result = addToCartService.isExistInCart(barcode, cartItems);
 
       expect(result).toEqual(cartItems[0]);
+    });
+
+    describe('getCartItems', function (){
+
+       it ('should load cartItems to localStorage', function () {
+
+         var item = {barcode:'ITEM000001', name: '雪碧', unit:'瓶', price:3.00, category:'饮品'};
+         var cartItems = [{item: item, number: 1}];
+         spyOn(addToCartService, 'isExistInCart').andReturn(undefined);
+         spyOn(localStorageService, 'set');
+         addToCartService.getCartItems(item, cartItems);
+
+         expect(addToCartService.isExistInCart.calls.length).toBe(1);
+
+       });
     });
 });
