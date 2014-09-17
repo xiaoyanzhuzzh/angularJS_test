@@ -12,7 +12,7 @@ angular.module('myYoApp')
 
       $scope.addToCart = function(item) {
 
-        $scope.$emit('to-parent-cartCount').addCartCount();
+        $scope.$emit('to-parent-cartCount');
 
         if (!$scope.cartItems) {
           $scope.cartItems = [];
