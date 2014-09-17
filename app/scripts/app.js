@@ -1,13 +1,4 @@
 'use strict';
-
-/**
- * @ngdoc overview
- * @name myYoApp
- * @description
- * # myYoApp
- *
- * Main module of the application.
- */
 angular
   .module('myYoApp', [
     'ngAnimate',
