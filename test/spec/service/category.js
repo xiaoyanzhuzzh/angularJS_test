@@ -155,24 +155,23 @@ describe('categoryService', function () {
 
       });
 
-      // it('should have changeItem function and return changed items', function(){
-      //
-      //   spyOn(localStorageService,'get').andReturn([{id: 0, name:'饮品'}]);
-      //   category = {id: 0, name: '饮品t'};
-      //
-      //   var result = categoryService.changeItem(category, items);
-      //
-      //   expect(result.length).toBe(1);
-      //   expect(result[0].category).toEqual('饮品t');
-      //   expect(result[0].name).toEqual('雪碧');
-      //
-      //   expect(localStorageService.set.calls.length).toBe(1);
-      //   expect(localStorageService.get.calls.length).toBe(1);
-      // });
+      it('should have changeItem function and return changed items', function(){
+
+        spyOn(localStorageService,'get').andReturn({id: 0, name:'饮品'});
+        category = {id: 0, name: '饮品t'};
+
+        var result = categoryService.changeItem(category, items);
+
+        expect(result.length).toBe(1);
+        expect(result[0].category).toEqual('饮品t');
+
+        expect(localStorageService.set.calls.length).toBe(2);
+        expect(localStorageService.get.calls.length).toBe(1);
+      });
 
       it('should have changeItem function and return the same items', function(){
 
-        spyOn(localStorageService,'get').andReturn([{id: 0, name:'水果'}]);
+        spyOn(localStorageService,'get').andReturn({id: 0, name:'水果'});
         category = {id: 0, name: '水果f'};
 
         var result = categoryService.changeItem(category, items);
